@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+ h1
+{
+	color: white;
+	text-align: center;
+	text-shadow: 2px 2px 4px #000000;
+}
+h2
+{
+	color: white;
+	text-align: center;
+    text-shadow: 2px 2px 4px #000000;
+}
+body
+{
+	background-color: #CFE2E4  ;
+}
+
+a:link {color: blue }
+a:visited {color: red }
+a:hover {color: yellow }
+a:active {color: lime }
+
+fieldset
+{
+  text-align: center;
+
+  max-width:200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding:16px;
+	background-color: rgb(255,255,255);
+}
+p
+
+div {
+    width: 100px;
+    height: 100px;
+    background: red;
+    -webkit-transition: width 2s; /* Safari */
+    transition: width 2s;
+}
+
+.blanc{
+    font-family: "Permanent Marker", cursive;
+    text-align: center;
+    font-size: 50px;
+    color: rgb(250, 251, 249);
+    text-shadow: rgba(149, 255, 20, 0.05) 2px 2px 2px;
+}
+
+footer
+{
+    color: white;
+    position:relative;
+    bottom:0;
+    margin:10px;
+}
+
+.details{
+  color: black;
+	text-align: center;
+  font-size: 25px;
+  font-family: Verdana, sans-serif;
+  width:700px;
+  padding:40px;
+  margin:auto;
+
+}
+
+.pied{
+  color: white;
+  font-size: 20px;
+  font-style:bold;
+  font-family: Comic sans-serif;
+}
+.arbo{
+  color: white;
+  font-size: 20px;
+  font-style:bold;
+  font-family: Comic sans-serif;
+  text-align: left;
+
+}
+
+
+
+#chart {
+    font-family: "Helvetica Neue";
+  	margin-left: -20px;
+  	height: 506px;
+}
+
+.dot { stroke: #000; }
+
+.axis path, .axis line {
+  	fill: none;
+  	stroke: #000;
+  	shape-rendering: crispEdges;
+}
+
+.year.label {
+  	font: 500 196px "Helvetica Neue";
+  	fill: #525757 ;
+
+}
+
+.overlay {
+  	fill: none;
+  	pointer-events: all;
+  	cursor: ew-resize;
+}
+  .d3-tip {
+  font-family: "Helvetica Neue";
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Northward tooltips */
+.d3-tip.n:after {
+  content: "\25BC";
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+  text-align: center;
+}
+
+/* Eastward tooltips */
+.d3-tip.e:after {
+  content: "\25C0";
+  margin: -4px 0 0 0;
+  top: 50%;
+  left: -8px;
+}
+
+/* Southward tooltips */
+.d3-tip.s:after {
+  content: "\25B2";
+  margin: 0 0 1px 0;
+  top: -8px;
+  left: 0;
+  text-align: center;
+}
+
+/* Westward tooltips */
+.d3-tip.w:after {
+  content: "\25B6";
+  margin: -4px 0 0 -1px;
+  top: 50%;
+  left: 100%;
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<link href="../static/css/iron5.css" rel="stylesheet" type="text/css" media="all" />
+  <meta charset="utf-8">
+
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+
+<body>
+  <center>
+</br>
+</br>
+  <h3> Soyez patient, le graphe peut être long à charger (nous cherchons à joindre nos superheros)... </h3>
+  </br>
+  <a href="/accueil_graph">Retour</a>
+  </br>
+  </br>
+</script>
+<table>
+ <tr>
+  <td><img src="../static/red.png"  width=20 height=20/></td>
+  <td>Personnage sélectionné</td>
+ </tr>
+ <tr>
+  <td><img src="../static/blue.png" width=20 height=20/></td>
+  <td> Comics dans lequel le personnal sélectionné apparaît </td>
+ </tr>
+ <tr>
+  <td><img src="../static/yellow.png" width=20 height=20/></td>
+  <td> Personnages recontrés dans ces comics</td>
+ </tr>
+
+</table>
+
+
+
+
+<svg width="1000" height="500"></svg>
+<script>
+
+//Création d'une fonction qui permet d'afficher du texte et des liens sur notre page html
+function myFunction(text_content, nombre) {
+  var b = document.createElement("br");
+  document.body.appendChild(b);
+  var a = document.createElement("a");
+  var p= document.createElement("p");
+  var t = document.createTextNode(text_content);
+
+  if (nombre==1){
+    a.appendChild(t);
+    a.title=text_content
+    a.href="/affiche?heros="+text_content
+    document.body.appendChild(b);
+    document.body.appendChild(a);
+  }else{
+    document.body.appendChild(b);
+    p.appendChild(t);
+    document.body.appendChild(p);
+  }
+
+
+}
+</script>
+</center>
+    <p class="arbo"> Arborescence actuelle : </p>
+
+<center>
+<script>
+//On affiche le nom du premier héro sélectionné
+myFunction("{{hero}}",1)
+
+//Création du premier graphe en fonction du héro sélectionné sur la page d'accueil
+create_graph("/graph?name={{hero}}")
+
+//Fonction qui crée le graphe interactif avec en paramètre la route pour récupérer le nom du héro
+function create_graph(route){
+  var newData={};
+  var svg = d3.select("svg"),
+      width = +svg.attr("width"),
+      height = +svg.attr("height");
+  var color = d3.scaleLinear()
+      .domain([0,1,2])
+      .range(["#FF0000", "#4682B4", "#F5E70B"]);
+  var simulation = d3.forceSimulation()
+      .force("link", d3.forceLink().id(function(d) { return d.id; }))
+      .force("charge", d3.forceManyBody())
+      .force("center", d3.forceCenter(width / 2, height / 2));
+  d3.json(route, function(error, graph) {
+    if (error) throw error;
+    var link = svg.append("g")
+        .attr("class", "links")
+      .selectAll("line")
+      .data(graph.links)
+      .enter().append("line")
+        .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
+    var node = svg.append("g")
+        .attr("class", "nodes")
+      .selectAll("circle")
+      .data(graph.nodes)
+      .enter().append("circle")
+        .attr("r", 5)
+        .on("click", myclick)
+        .attr("fill", function(d) { return color(d.group); })
+        .call(d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+
+            .on("end", dragended));
+
+    node.append("title")
+        .text(function(d) { return d.id; });
+    simulation
+        .nodes(graph.nodes)
+        .on("tick", ticked);
+    simulation.force("link")
+        .links(graph.links);
+    function ticked() {
+      link
+          .attr("x1", function(d) { return d.source.x; })
+          .attr("y1", function(d) { return d.source.y; })
+          .attr("x2", function(d) { return d.target.x; })
+          .attr("y2", function(d) { return d.target.y; });
+      node
+          .attr("cx", function(d) { return d.x; })
+          .attr("cy", function(d) { return d.y; });
+    }
+  });
+  function dragstarted(d) {
+    if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+    d.fx = d.x;
+    d.fy = d.y;
+  }
+  function dragged(d) {
+    d.fx = d3.event.x;
+    d.fy = d3.event.y;
+  }
+  function dragended(d) {
+    if (!d3.event.active) simulation.alphaTarget(0);
+    d.fx = null;
+    d.fy = null;
+  }
+
+//Fonction qui gère les événements lors du clique : renvoie vers une nouvelle page avec un nouveau grahique généré
+  function myclick(d){
+    if(d.group!=1){
+      myFunction(d.id,1);
+      if(d.group ==2 || d.group==0) d3.selectAll("svg > *").remove();
+        route ='/graph?name='+d.id
+        create_graph(route)
+
+    }
+
+    if(d.group==1){
+      myFunction("Vous avez cliqué sur un comic, cliquez sur un héro.",2);
+    }
+
+    }
+
+}
+</script>
+</center>
+</body>
+</html>

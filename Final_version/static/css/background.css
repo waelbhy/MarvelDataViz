@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+ h1
+{
+	color: white;
+	text-align: center;
+  font-size: 40px;
+	text-shadow: 2px 2px 4px #000000;
+}
+h2
+{
+	color: white;
+	text-align: center;
+    text-shadow: 2px 2px 4px #000000;
+}
+body
+{
+	background-color: #CFE2E4  ;
+}
+
+a:link {color: blue }
+a:visited {color: red }
+a:hover {color: yellow }
+a:active {color: lime }
+
+fieldset
+{
+  text-align: center;
+
+  max-width:200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding:16px;
+	background-color: rgb(255,255,255);
+}
+p
+
+div {
+    width: 100px;
+    height: 100px;
+    background: red;
+    -webkit-transition: width 2s; /* Safari */
+    transition: width 2s;
+}
+
+.blanc{
+    font-family: "Permanent Marker", cursive;
+    text-align: center;
+    font-size: 50px;
+    color: rgb(250, 251, 249);
+    text-shadow: rgba(149, 255, 20, 0.05) 2px 2px 2px;
+}
+
+footer
+{
+    color: white;
+    position:relative;
+    bottom:0;
+    margin:10px;
+}
+
+.details{
+  color: black;
+	text-align: center;
+  font-size: 25px;
+  font-family: Verdana, sans-serif;
+  width:700px;
+  padding:40px;
+  margin:auto;
+
+}
+
+.pied{
+  color: white;
+  font-size: 20px;
+  font-style:bold;
+  font-family: Comic sans-serif;
+}
+.arbo{
+  color: white;
+  font-size: 20px;
+  font-style:bold;
+  font-family: Comic sans-serif;
+  text-align: left;
+
+}
+
+p{
+    font-family: "Permanent Marker", cursive;
+    text-align: left;
+    font-size: 20px;
+    color: black;
+    text-shadow: rgba(149, 255, 20, 0.05) 2px 2px 2px;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang=fr>
+	<head>
+		<link href="../static/css/accueil_graph.css" rel="stylesheet" type="text/css" media="all" />
+		<title>Choix du héros central</title>
+	</head>
+
+	<body>
+
+		<h1> Graphe des intéractions </h1>
+		</br>
+
+
+	</br>
+
+		<form action="/affiche" method="get">
+		<fieldset>
+		<legend><bold>Choisissez un héro :</bold></legend>
+			<FORM>
+			<SELECT name="heros" size="1">
+			<OPTION>Iron Man</OPTION>
+			<OPTION>Daredevil</OPTION>
+			<OPTION>Wolverine</OPTION>
+			<OPTION>Black Widow</OPTION>
+			</SELECT>
+			</FORM>
+			</br>
+			</br>
+			</br>
+		<input type="submit"/>
+		</fieldset>
+		</form>
+
+	</br>
+			<center>
+				<img src="/static/iron.png" alt="Choix Personnages" width="100" height="100"/>
+				<img src="/static/wolverine.png" alt="Choix Personnages" width="100" height="100"/>
+				<img src="/static/daredevil.png" alt="Choix Personnages" width="100" height="100"/>
+				<img src="/static/blackwidow.png" alt="Choix Personnages" width="100" height="100"/>
+
+			</br>
+			</br>
+			</br>
+
+
+			<h2> Qu'est-ce que le graphe des intéractions ?</h2>
+			</br>
+			<h3>Ce graphe permet de visualiser les intéractions du personnage séléctionné. Quand vous avez validé votre choix de personnage, un graphe s'affiche.</h3>
+			<h3>Ce graphe met en avant tous les comics Marvel dans lesquels apparaît ce personnage, ainsi que tous les personnages qu'il rencontre dans ces comics. </h3>
+			<h3>Cette visualisation est intéressante car elle permet de voir les différents liens entre chaque personnage. On peut même parfois être surpris de voir un personnage peu 'connu' être relié à de nombreux personnages.</h3>
+			<h3>Une fois que le graphe affiché, vous pouvez cliquer sur un noeud (représenté par un point jaune) pour afficher le graphe d'un autre personnage. </h3>
+			<h3>Dr. Strange gardera l'arborescence de votre chemin en bas à gauche afin que vous puissiez retourner dans le passé sans problème ! </h3>
+
+</br>
+</br>
+</br>
+
+<a href="/choix_visu">Retour</a>
+</center>
+  </body>
+
+	<footer>
+	</br>
+	<p class="pied">Ce site a été créé par Wael Ben Hadj Yahia, Marie-Mathilde Garcia et Dorian Hervé dans le cadre de l'UE Projet Visualisation.</p>
+	</footer>
+</html>
